@@ -2,6 +2,8 @@ package app.ito.akki.count
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
@@ -36,11 +38,12 @@ class MainActivity : AppCompatActivity() {
         button8.text = number8.toString()
         button9.text = number9.toString()
 
+
         button.setOnClickListener {
             plusMethod(number)
 
             //ボタンの更新処理
-            number = Random.nextInt(45)
+            number = Random.nextInt(5)
             button.text = number.toString()
         }
 
@@ -105,6 +108,11 @@ class MainActivity : AppCompatActivity() {
         //ボタンクリック処理
         count = count + 1
         buttonCount.text = count.toString()
+        if(randomInt == 0){
+            Snackbar.make(ConstraintLayout,"ゲームクリア!!", Snackbar.LENGTH_SHORT).show()
+            count = 0
+            button.text = count.toString()
+        }
     }
 
     //引き算処理
@@ -115,5 +123,11 @@ class MainActivity : AppCompatActivity() {
         //ボタンクリック処理
         count = count + 1
         buttonCount.text = count.toString()
+
+        if(randomInt == 0){
+            Snackbar.make(ConstraintLayout,"ゲームクリア!!", Snackbar.LENGTH_SHORT).show()
+            count = 0
+            button.text = count.toString()
+        }
     }
 }
